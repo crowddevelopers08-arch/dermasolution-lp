@@ -3,7 +3,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 
 const DATA_DIR = path.join(process.cwd(), 'data');
-const FILE_PATH = path.join(DATA_DIR, 'dermaglow-leads.csv');
+const FILE_PATH = path.join(DATA_DIR, 'dermasolution-leads.csv');
 const HEADERS = [
   'Timestamp',
   'Source',
@@ -40,8 +40,8 @@ function toText(value: unknown): string {
 
 function normalizeSubmission(body: Record<string, unknown>): SubmissionBody {
   return {
-    formName: toText(body.formName) || 'dermaglow-leads',
-    source: toText(body.source) || 'dermaglow solutions form',
+    formName: toText(body.formName) || 'dermasolution-leads',
+    source: toText(body.source) || 'dermasolution form',
     name: toText(body.name),
     phone: toText(body.phone),
     concern: toText(body.concern),

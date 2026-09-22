@@ -94,8 +94,8 @@ export function ConsultationProvider({ children }: { children: ReactNode }) {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          formName: "dermaglow-leads",
-          source: "dermaglow solutions form",
+          formName: "dermasolution-leads",
+          source: "dermasolution form",
           name,
           phone,
           concern,
