@@ -71,7 +71,7 @@ const GREEN = "#C99045";
 
 export default function AboutSection() {
   return (
-    <section className="relative w-full overflow-hidden bg-white px-4 pb-16 pt-12 sm:px-8 2xl:pt-[71px]">
+    <section className="relative w-full overflow-hidden bg-white px-4 max-sm:pb-10 pb-16 pt-12 sm:px-8 2xl:pt-[71px]">
       {/* doctor cut-out — bottom-right corner, only when there is room beside the column */}
       {hasAsset(content.cutout) && (
         <Image
@@ -84,7 +84,7 @@ export default function AboutSection() {
         />
       )}
 
-      <div className="relative z-10 mx-auto grid max-w-[1458px] grid-cols-1 gap-10 lg:grid-cols-[694fr_712fr] lg:gap-[52px]">
+      <div className="relative z-10 mx-auto grid max-w-[1458px] grid-cols-1 gap-6 lg:grid-cols-[694fr_712fr] lg:gap-[52px]">
         {/* ── photo card — mobile: order-2 (after intro); desktop: normal (column 1) ── */}
         <div
           className="relative order-2 h-[460px] overflow-hidden rounded-[24px] sm:h-[600px] lg:order-none lg:h-[clamp(590px,calc(100vh-120px),708px)]"
@@ -173,7 +173,7 @@ export default function AboutSection() {
           <div className="order-3 lg:order-none">
           {/* highlighted quote */}
           <blockquote
-            className="mt-11 rounded-l-[6px] border-l-4 bg-[linear-gradient(90deg,#F6F1E8_0%,rgba(246,241,232,0)_100%)] py-[23px] pl-6 pr-8 sm:pl-[34px]"
+            className="mt-3 rounded-l-[6px] border-l-4 bg-[linear-gradient(90deg,#F6F1E8_0%,rgba(246,241,232,0)_100%)] py-[23px] pl-6 pr-8 sm:pl-[34px]"
             style={{ borderColor: GREEN }}
           >
             <p className="text-[16px] leading-[30px] text-[#3F3B36] sm:text-[18px]">
@@ -204,11 +204,11 @@ export default function AboutSection() {
           {/* divider */}
           <span
             aria-hidden
-            className="mt-[51px] block h-px w-full bg-[#E8E0D2]"
+            className="max-sm:mt-[25px] mt-[51px] block h-px w-full bg-[#E8E0D2]"
           />
 
           {/* button + avatars */}
-          <div className="mt-[49px] flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:gap-6">
+          <div className="mt-[49px] max-sm:mt-[23px] flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:gap-6">
             <BookButton
               className="group inline-flex h-[54px] shrink-0 items-center gap-3 rounded-full px-6 text-[15px] font-bold text-white transition-colors duration-300 hover:bg-[#B5802F] 2xl:h-[57px] 2xl:gap-[14px] 2xl:px-[27px] 2xl:text-[16px]"
               style={{ background: GREEN }}

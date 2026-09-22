@@ -93,11 +93,11 @@ const cards: {
 
 export default function TreatmentCards() {
   return (
-    <section className="w-full bg-white px-4 pb-12 pt-16 sm:px-8 sm:pb-16 sm:pt-20">
+    <section className="w-full bg-white px-4 pb-12 pt-12 sm:px-8 sm:pb-16 sm:pt-20">
       {/* heading */}
-      <div className="mx-auto mb-10 flex max-w-[900px] flex-col items-center text-center sm:mb-14">
+      <div className="mx-auto mb-10 flex max-w-[1100px] flex-col items-center text-center sm:mb-14">
         <h2 data-reveal-direction="top" className="text-balance text-[32px] leading-[1.15] tracking-[-0.01em] text-[#1F1F1F] sm:text-[44px] lg:text-[52px]">
-          What Are You Looking to Treat?
+          Concerns that We Address at Derma Solutions
         </h2>
         <span aria-hidden className="mt-5 h-[3px] w-14 rounded-full bg-[#C99045]" />
       </div>

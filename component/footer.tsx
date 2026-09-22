@@ -47,8 +47,8 @@ const InstagramIcon = (
 
 export default function SiteFooter() {
   return (
-    <footer id="footer-content" className="w-full bg-[#131313] px-6 pb-16 pt-14 text-white sm:px-10 lg:px-[60px] lg:pb-[50px] lg:pt-[50px]">
-      <div className="mx-auto grid max-w-[1900px] grid-cols-1 gap-10 lg:grid-cols-2 lg:items-start lg:gap-4">
+    <footer id="footer-content" className="w-full bg-[#131313] px-6 pb-16 pt-8 text-white sm:px-10 lg:px-[60px] lg:pb-[50px] lg:pt-[50px]">
+      <div className="mx-auto grid max-w-[1900px] grid-cols-1 gap-4 lg:grid-cols-2 lg:items-start lg:gap-4">
         {/* logo */}
         <Link
           href="/"
@@ -72,7 +72,7 @@ export default function SiteFooter() {
             {content.name}
           </h2>
 
-          <p data-stagger="2" data-reveal-direction="left" className="mt-6 max-w-[882px] text-[17px] leading-[31px] text-[#F2F2F2] sm:text-[20.4px] lg:mt-[22px]">
+          <p data-stagger="2" data-reveal-direction="left" className="mt-3 max-w-[882px] text-[17px] leading-[31px] text-[#F2F2F2] sm:text-[20.4px] lg:mt-[22px]">
             {content.address}
           </p>
 
@@ -80,12 +80,12 @@ export default function SiteFooter() {
             href={content.phoneHref}
             data-stagger="3"
             data-reveal-direction="right"
-            className="mt-5 inline-block text-[17px] leading-[31px] text-[#F2F2F2] transition-colors hover:text-[#C99045] sm:text-[20.4px]"
+            className="mt-3 inline-block text-[17px] leading-[31px] text-[#F2F2F2] transition-colors hover:text-[#C99045] sm:text-[20.4px]"
           >
             {content.phone}
           </a>
 
-          <div className="mt-12 lg:mt-[26px]">
+          <div className="mt-4 lg:mt-[26px]">
             <a
               href={content.instagram}
               data-stagger="4"
@@ -98,7 +98,7 @@ export default function SiteFooter() {
           </div>
 
           {/* copyright + privacy link: one row from md up; the text scales down so it always fits */}
-          <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-1 text-[15px] leading-[31px] text-[#F2F2F2] sm:text-[16px] md:flex-nowrap md:text-[18px] lg:mt-[17px] lg:text-[clamp(12px,1.1vw,20.4px)]">
+          <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1 text-[15px] leading-[31px] text-[#F2F2F2] sm:text-[16px] md:flex-nowrap md:text-[18px] lg:mt-[17px] lg:text-[clamp(12px,1.1vw,20.4px)]">
             <p data-stagger="5" data-reveal-direction="right" className="md:whitespace-nowrap">{content.copyright}</p>
             <span aria-hidden className="hidden h-5 w-px shrink-0 bg-white/30 md:block" />
             <Link
