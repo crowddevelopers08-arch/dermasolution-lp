@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { MapPin, Phone } from "lucide-react";
 import { BookButton } from "@/component/consultation-form";
+import { cloudinaryImages } from "@/lib/cloudinary-images";
 
 /**
  * "Book a consultation" banner — headline, short copy, CTA and contact details
@@ -11,7 +12,7 @@ import { BookButton } from "@/component/consultation-form";
  *   charcoal #1F1F1F, warm grey text, cream #FBF8F3.
  * - The h2 picks up the global heading font (Gilda Display); everything else
  *   uses PT Serif.
- * - The doctor image is /public/doctor1.png (transparent PNG). From xl up it
+ * - The doctor image is a Cloudinary transparent PNG. From xl up it
  *   stands on the panel and pops out of the top edge; below xl it moves into
  *   its own card underneath.
  * - All copy is in `content` so it is easy to replace.
@@ -25,7 +26,7 @@ const content = {
   location: "Banashankari, Bangalore",
   phone: "+91 6363136080",
   phoneHref: "tel:+916363136080",
-  image: "/doctor1.png",
+  image: cloudinaryImages.doctorCutout,
   imageAlt: "Doctor ready to help with your consultation",
 };
 

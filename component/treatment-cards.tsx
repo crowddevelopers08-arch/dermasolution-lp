@@ -96,17 +96,17 @@ export default function TreatmentCards() {
     <section className="w-full bg-white px-4 pb-12 pt-16 sm:px-8 sm:pb-16 sm:pt-20">
       {/* heading */}
       <div className="mx-auto mb-10 flex max-w-[900px] flex-col items-center text-center sm:mb-14">
-        <h2 className="text-balance text-[32px] leading-[1.15] tracking-[-0.01em] text-[#1F1F1F] sm:text-[44px] lg:text-[52px]">
+        <h2 data-reveal-direction="top" className="text-balance text-[32px] leading-[1.15] tracking-[-0.01em] text-[#1F1F1F] sm:text-[44px] lg:text-[52px]">
           What Are You Looking to Treat?
         </h2>
         <span aria-hidden className="mt-5 h-[3px] w-14 rounded-full bg-[#C99045]" />
       </div>
 
       <ul className="mx-auto grid max-w-[1832px] grid-cols-1 gap-[38px] sm:grid-cols-2 lg:grid-cols-4">
-        {cards.map((card) => {
+        {cards.map((card, i) => {
           const t = themes[card.theme]
           return (
-            <li key={card.id} className="flex">
+            <li key={card.id} data-stagger={i} data-reveal-direction={i % 2 === 0 ? "left" : "right"} className="flex">
               <BookLink
                 aria-label={card.title}
                 className={`group relative flex w-full flex-col rounded-[32px] p-8 pb-[46px] transition-transform duration-300 hover:-translate-y-1 sm:p-[50px] sm:pb-[46px] lg:p-[36px] lg:pb-[46px] xl:p-[44px] xl:pb-[46px] 2xl:p-[50px] 2xl:pb-[46px] ${t.card}`}

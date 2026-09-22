@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react"
 import { getImageProps } from "next/image"
 import { MapPin } from "lucide-react"
 import { BookButton } from "@/component/consultation-form"
+import { cloudinaryImages } from "@/lib/cloudinary-images"
 
 /**
  * Skin, Hair & Aesthetic Care hero — Bangalore clinic.
@@ -31,38 +32,38 @@ const ROTATE_MS = 4500
 const slides = [
   {
     label: "Acne",
-    desktop: "/acne-banner.png",
-    mobile: "/acne-mble.png",
+    desktop: cloudinaryImages.acneBanner,
+    mobile: cloudinaryImages.acneMobile,
     tint: "linear-gradient(135deg, #2A2724 0%, #4B3B29 100%)",
   },
   {
     label: "Pigmentation",
-    desktop: "/pig-banner.png",
-    mobile: "/pig-mbl.png",
+    desktop: cloudinaryImages.pigmentationBanner,
+    mobile: cloudinaryImages.pigmentationMobile,
     tint: "linear-gradient(135deg, #272727 0%, #5A4429 100%)",
   },
   {
     label: "Hair Loss",
-    desktop: "/hair-loss.png",
-    mobile: "/hair-loss-mbl.png",
+    desktop: cloudinaryImages.hairBanner,
+    mobile: cloudinaryImages.hairMobile,
     tint: "linear-gradient(135deg, #252525 0%, #3F3A34 100%)",
   },
   {
     label: "Laser Treatments",
-    desktop: "/laser-banner.webp",
-    mobile: "/laser-mbl.png",
+    desktop: cloudinaryImages.laserBanner,
+    mobile: cloudinaryImages.laserMobile,
     tint: "linear-gradient(135deg, #2B2622 0%, #6A4C25 100%)",
   },
   {
     label: "Skin Rejuvenation",
-    desktop: "/skin-banner.png",
-    mobile: "/skin-mble.png",
+    desktop: cloudinaryImages.skinBanner,
+    mobile: cloudinaryImages.skinMobile,
     tint: "linear-gradient(135deg, #2A2825 0%, #55452F 100%)",
   },
   {
     label: "Anti-Ageing",
-    desktop: "/anti-banner.png",
-    mobile: "/anti-mble.png",
+    desktop: cloudinaryImages.antiBanner,
+    mobile: cloudinaryImages.antiMobile,
     tint: "linear-gradient(135deg, #262626 0%, #4E3F2C 100%)",
   },
 ]
@@ -125,7 +126,7 @@ export default function ClinicHero() {
   }, [active])
 
   return (
-    <section className="relative isolate flex min-h-[440px] w-full items-center justify-center overflow-hidden bg-[#1F1F1F] px-6 py-8 sm:min-h-[670px] sm:py-24">
+    <section data-no-reveal className="relative isolate flex min-h-[440px] w-full items-center justify-center overflow-hidden bg-[#1F1F1F] px-6 py-8 sm:min-h-[670px] sm:py-24">
       {/* rotating backgrounds — crossfade */}
       {slides.map((slide, i) => (
         <div
@@ -154,15 +155,15 @@ export default function ClinicHero() {
 
       {/* content */}
       <div className="relative z-10 mx-auto flex w-full min-w-0 max-w-[720px] flex-col items-center text-center">
-        <h1 className="text-[38px] leading-[1.15] tracking-[-0.01em] text-[#F7F3EC] sm:text-[52px] lg:text-[60px]">
+        <h1 className="hero-reveal hero-reveal-left hero-reveal-1 text-[38px] leading-[1.15] tracking-[-0.01em] text-[#F7F3EC] sm:text-[52px] lg:text-[60px]">
           Skin, Hair &amp; Aesthetic Care in Bangalore
         </h1>
 
-        <p className="mt-5 text-[18px] text-[#E6C58F] sm:text-[21px]">
+        <p className="hero-reveal hero-reveal-right hero-reveal-2 mt-5 text-[18px] text-[#E6C58F] sm:text-[21px]">
           Personalised treatments, guided by a dermatologist.
         </p>
 
-        <p className="mt-4 max-w-[560px] text-[15px] leading-relaxed text-[#C9C4BB] sm:text-[16px]">
+        <p className="hero-reveal hero-reveal-left hero-reveal-3 mt-4 max-w-[560px] text-[15px] leading-relaxed text-[#C9C4BB] sm:text-[16px]">
           From acne, pigmentation and hair loss to laser treatments, skin
           rejuvenation and anti-ageing, get the right treatment for your
           concern.
@@ -175,7 +176,7 @@ export default function ClinicHero() {
           className="relative mt-7 flex w-[calc(100%+3rem)] flex-nowrap items-center gap-2.5 overflow-x-auto px-6 [mask-image:linear-gradient(to_right,transparent,#000_28px,#000_calc(100%-28px),transparent)] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:w-auto sm:flex-wrap sm:justify-center sm:overflow-visible sm:px-0 sm:[mask-image:none]"
         >
           {slides.map((slide, i) => (
-            <li key={slide.label} className="shrink-0">
+            <li key={slide.label} className={`hero-reveal ${i % 2 === 0 ? "hero-reveal-right" : "hero-reveal-left"} hero-reveal-${i + 4} shrink-0`}>
               <button
                 type="button"
                 ref={(el) => {
@@ -197,13 +198,13 @@ export default function ClinicHero() {
 
         {/* CTA */}
         <BookButton
-          className="mt-10 rounded-full bg-[#C99045] px-9 py-4 text-[15px] font-semibold tracking-wide text-white transition hover:bg-[#B5802F] sm:text-[16px]"
+          className="hero-reveal hero-reveal-right hero-reveal-10 mt-10 rounded-full bg-[#C99045] px-9 py-4 text-[15px] font-semibold tracking-wide text-white transition hover:bg-[#B5802F] sm:text-[16px]"
         >
           Book a Consultation
         </BookButton>
 
         {/* location */}
-        <div className="mt-6 flex flex-col items-center gap-1">
+        <div className="hero-reveal hero-reveal-left hero-reveal-11 mt-6 flex flex-col items-center gap-1">
           <div className="flex items-center gap-1.5 text-[14px] text-[#DDD8CF]">
             <MapPin className="h-4 w-4 text-[#C99045]" strokeWidth={1.8} />
             Banashankari, Bangalore

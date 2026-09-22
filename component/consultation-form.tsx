@@ -25,7 +25,7 @@ import { concernGroups } from "@/lib/concerns"
  *   open it, so any button on any page can use it.
  * - Fields: name, phone number, concern (a dropdown — options in lib/concerns.ts).
  *   On submit the details are POSTed to
- *   /api/consultation (app/api/consultation/route.ts); when that succeeds the
+ *   /api/submissions (app/api/submissions/route.ts); when that succeeds the
  *   visitor is sent straight to /thank-you.
  * - Uses the native <dialog> element, so Esc, focus trapping and the backdrop
  *   come for free.
@@ -90,13 +90,16 @@ export function ConsultationProvider({ children }: { children: ReactNode }) {
 
     setSending(true)
     try {
-      const res = await fetch("/api/consultation", {
+      const res = await fetch("/api/submissions", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          formName: "dermaglow-leads",
+          source: "dermaglow solutions form",
           name,
           phone,
           concern,
+          pageUrl: window.location.href,
           website: String(data.get("website") ?? ""), // honeypot
         }),
       })

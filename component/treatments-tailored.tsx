@@ -1,6 +1,5 @@
-import { existsSync } from "node:fs"
-import path from "node:path"
 import Image from "next/image"
+import { cloudinaryImages } from "@/lib/cloudinary-images"
 
 /**
  * "Treatments Tailored to You" — intro on the left, five treatment
@@ -12,10 +11,7 @@ import Image from "next/image"
  *   the left (desktop), a list on the right.
  * - Each row is numbered, with its treatments run together and separated by
  *   "•", matching how the content was given.
- * - Hover image: reuses existing hero photos where the subject genuinely
- *   matches the category (see `image` below). "Specialised Dermatology" has
- *   no matching photo yet, so it falls back to a plain gold/charcoal tint —
- *   add a real photo and it will be used automatically (see `hasAsset`).
+ * - Hover images use the supplied Cloudinary assets for each category.
  *   The gutter is reserved at lg+ regardless of hover, so nothing shifts.
  * - Headings are <h2>/<h3>, so they pick up the global heading font
  *   (Gilda Display); everything else uses PT Serif.
@@ -38,7 +34,7 @@ const categories = [
       "Diamond Dermal Infusion",
       "Pigmentation treatments",
     ],
-    image: "/skin-banner.png",
+    image: cloudinaryImages.skinBanner,
   },
   {
     title: "Hair & Scalp",
@@ -48,7 +44,7 @@ const categories = [
       "Hair-related treatments",
       "Laser hair reduction",
     ],
-    image: "/hair-loss.png",
+    image: cloudinaryImages.hairBanner,
   },
   {
     title: "Laser Treatments",
@@ -58,7 +54,7 @@ const categories = [
       "Birthmark removal",
       "Redness treatment",
     ],
-    image: "/laser-banner.webp",
+    image: cloudinaryImages.laserBanner,
   },
   {
     title: "Anti-Ageing & Aesthetics",
@@ -68,7 +64,7 @@ const categories = [
       "Body treatments",
       "Cellulite treatments",
     ],
-    image: "/anti-banner.png",
+    image: cloudinaryImages.antiBanner,
   },
   {
     title: "Specialised Dermatology",
@@ -77,13 +73,12 @@ const categories = [
       "Pediatric Dermatology",
       "Nail fungus treatments",
     ],
-    image: "/images1.jpg", // add this file to /public to show a photo
+    image: cloudinaryImages.specialised,
   },
 ]
 
-/** True when the file exists in /public — avoids broken-image boxes while assets are missing. */
-const hasAsset = (src: string) =>
-  existsSync(path.join(process.cwd(), "public", src))
+/** Keep the optional image fallback available if a category has no URL. */
+const hasAsset = (src: string) => Boolean(src)
 
 const num = (i: number) => String(i + 1).padStart(2, "0")
 

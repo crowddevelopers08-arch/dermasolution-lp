@@ -1,13 +1,16 @@
 import Image from "next/image"
 import Link from "next/link"
 import { BookButton } from "@/component/consultation-form"
+import { cloudinaryImages } from "@/lib/cloudinary-images"
 
 /**
- * Top navbar — logo on the left, "Book Now" button (open-book icon + text)
- * on the right.
+ * Top navbar — logo on the left, "Book a Consultation" button (open-book
+ * icon + text) on the right.
  *
  * The logo is a transparent WebP in grey + gold, so the bar is kept light
  * (warm off-white) to keep it readable. The button uses the gold from the logo.
+ * Below 368px wide the button says "Book Now"; from 368px up it says
+ * "Book a Consultation".
  */
 
 const BookIcon = (
@@ -36,21 +39,23 @@ export default function Navbar() {
         {/* logo */}
         <Link href="/" aria-label="Dr. Sindhu's Derma Solutions — home" className="shrink-0">
           <Image
-            src="/Derma+Solutions+Logo.webp"
+            src={cloudinaryImages.logo}
             alt="Dr. Sindhu's Derma Solutions — Medical & Aesthetic Dermatology"
             width={901}
             height={277}
             priority
-            className="h-10 w-auto sm:h-14"
+            className="h-14 w-auto sm:h-25"
           />
         </Link>
 
-        {/* CTA */}
+        {/* CTA label changes at 368px */}
         <BookButton
-          className="inline-flex shrink-0 items-center gap-2 rounded-full bg-[#C99045] px-5 py-2.5 text-[13px] font-semibold tracking-wide text-white transition hover:bg-[#B5802F] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C99045] sm:gap-2.5 sm:px-7 sm:py-3 sm:text-[15px]"
+          aria-label="Book a Consultation"
+          className="inline-flex h-10 shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-full bg-[#C99045] px-3 text-[12px] font-semibold text-white transition hover:bg-[#B5802F] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C99045] min-[368px]:h-auto min-[368px]:py-2.5 sm:gap-2.5 sm:px-7 sm:py-3 sm:text-[15px]"
         >
           {BookIcon}
-          Book Now
+          <span className="min-[368px]:hidden">Book Now</span>
+          <span className="hidden min-[368px]:inline">Book a Consultation</span>
         </BookButton>
       </nav>
     </header>

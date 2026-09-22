@@ -1,8 +1,7 @@
-import { existsSync } from "node:fs";
-import path from "node:path";
 import Image from "next/image";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { BookButton } from "@/component/consultation-form";
+import { cloudinaryImages } from "@/lib/cloudinary-images";
 
 /**
  * "About Us" section — photo card with a floating quote card on the left;
@@ -10,9 +9,7 @@ import { BookButton } from "@/component/consultation-form";
  * row on the right; a doctor cut-out standing in the bottom-right corner.
  *
  * Design notes:
- * - Images live in /public/about/ (see `content` below):
- *   Until a file exists it is skipped (photo/avatars show a gradient
- *   placeholder, the cut-out is simply absent) — see `hasAsset`.
+ * - Images use the supplied Cloudinary assets (see `content` below).
  * - The cut-out (transparent PNG, 564x653) only shows from 1700px wide: below
  *   that there is no free space beside the text column and it would cover the
  *   button row.
@@ -48,27 +45,26 @@ const content = {
     title: "Successful Treatments",
     text: "Quality care with proven results",
   } as { title: string; text: string } | null, // avatars + title
-  photo: "/doctorimage.webp",
+  photo: cloudinaryImages.doctorPhoto,
   avatars: [
     {
-      src: "/avator-1.png",
+      src: cloudinaryImages.avatar1,
       tint: "linear-gradient(135deg,#D9B77E,#A8712F)",
     },
     {
-      src: "/avator-2.png",
+      src: cloudinaryImages.avatar2,
       tint: "linear-gradient(135deg,#CFCAC2,#8A8680)",
     },
     {
-      src: "/avator-3.png",
+      src: cloudinaryImages.avatar3,
       tint: "linear-gradient(135deg,#E6C58F,#C99045)",
     },
   ],
-  cutout: "/doctor1.png",
+  cutout: cloudinaryImages.doctorCutout,
 };
 
-/** True when the file exists in /public — avoids broken-image boxes while assets are missing. */
-const hasAsset = (src: string) =>
-  existsSync(path.join(process.cwd(), "public", src));
+/** Keep the optional image fallback available if a URL is missing. */
+const hasAsset = (src: string) => Boolean(src);
 
 const NAVY = "text-[#1F1F1F]";
 const GREEN = "#C99045";
