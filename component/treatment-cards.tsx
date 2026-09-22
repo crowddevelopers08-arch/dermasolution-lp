@@ -23,7 +23,7 @@ import { BookLink } from "@/component/consultation-form"
 /** classes for each colour scheme (dark = charcoal card, gold = gold card) */
 const themes = {
   dark: {
-    card: "bg-[#2A2724]",
+    card: "bg-[#737373]",
     number: "text-[#E6C58F]",
     title: "text-white",
     divider: "bg-white/25",
@@ -164,7 +164,7 @@ export default function TreatmentCards() {
                 {/* arrow button */}
                 <span
                   aria-hidden
-                  className="absolute bottom-0 right-0 flex h-16 w-16 items-center justify-center rounded-full bg-[#1F1F1F] text-white transition-colors duration-300 group-hover:bg-[#C99045]"
+                  className="absolute bottom-0 right-0 flex h-16 w-16 items-center justify-center rounded-full bg-[#737373] text-white transition-colors duration-300 group-hover:bg-[#C99045]"
                 >
                   <ArrowUpRight
                     className="h-[18px] w-[18px] transition-transform duration-300 group-hover:translate-x-px group-hover:-translate-y-px"

@@ -136,7 +136,7 @@ export default function AboutSection() {
           {/* badge + heading + intro — mobile: order-1 (before the photo) */}
           <div className="order-1 lg:order-none">
             {/* badge */}
-            <span className="inline-flex h-[39px] w-fit items-center rounded-full border border-[#E8E0D2] bg-white px-5">
+            <span className="inline-flex min-h-[39px] max-w-full items-center rounded-full border border-[#E8E0D2] bg-white px-5 py-1">
               <span className={`text-[14px] font-bold ${NAVY}`}>
                 {content.badge}
               </span>

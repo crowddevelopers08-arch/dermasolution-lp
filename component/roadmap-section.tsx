@@ -165,7 +165,7 @@ const steps: {
   {
     title: "Comprehensive Care",
     text: "Address skin, hair, scalp, and aesthetic concerns in one clinic.",
-    color: "#8C7B6B",
+    color: "#737373",
     icon: ChartIcon,
     badge: { x: 1073, y: 247 },
     caption: { x: 1071, y: 66, from: "top" },

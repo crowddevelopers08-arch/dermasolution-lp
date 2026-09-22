@@ -12,11 +12,11 @@ import TreatmentsTailored from "@/component/treatments-tailored";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 bg-zinc-50 dark:bg-black">
+    <div className="flex w-full min-w-0 flex-col flex-1 overflow-x-clip bg-zinc-50 dark:bg-black">
       <MobileActionBar />
       <Navbar />
       <ScrollTextReveal />
-      <main id="home-content" className="flex flex-1 flex-col">
+      <main id="home-content" className="flex min-w-0 flex-1 flex-col">
         <ClinicHero />
         <TreatmentCards />
         <TreatmentsTailored />

@@ -55,14 +55,14 @@ export default function SiteFooter() {
           data-stagger="0"
           data-reveal-direction="left"
           aria-label="Dr. Sindhu’s Derma Solutions — home"
-          className="block w-fit lg:mt-[18px]"
+          className="block w-fit max-w-full lg:mt-[18px]"
         >
           <Image
             src={cloudinaryImages.logo}
             alt="Dr. Sindhu’s Derma Solutions — Medical & Aesthetic Dermatology"
             width={901}
             height={277}
-            className="h-auto w-[300px] [filter:brightness(0)_invert(1)] sm:w-[400px] lg:w-[510px]"
+            className="h-auto w-[300px] max-w-full [filter:brightness(0)_invert(1)] sm:w-[400px] lg:w-[510px]"
           />
         </Link>
 
