@@ -94,7 +94,7 @@ const cards: {
 export default function TreatmentCards() {
   return (
     <section className="w-full bg-white px-4 pb-12 pt-12 sm:px-8 sm:pb-16 sm:pt-20">
-      {/* heading */}
+      {/* heading*/}
       <div className="mx-auto mb-10 flex max-w-[1100px] flex-col items-center text-center sm:mb-14">
         <h2 data-reveal-direction="top" className="text-balance text-[32px] leading-[1.15] tracking-[-0.01em] text-[#1F1F1F] sm:text-[44px] lg:text-[52px]">
           Concerns that We Address at Derma Solutions
