@@ -97,12 +97,12 @@ export function InfoSection({ onStartScan }: InfoSectionProps) {
           </p>
           <div className="info-side-images">
             <img
-              src="before4.jpg"
+              src="https://res.cloudinary.com/m5fcfwt7/image/upload/v1790170625/before4.jpg"
               alt="Hair scan left view"
               className="info-side-image"
             />
             <img
-              src="before5.avif"
+              src="https://res.cloudinary.com/m5fcfwt7/image/upload/v1790170626/before5.avif"
               alt="Hair scan right view"
               className="info-side-image"
             />
