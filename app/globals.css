@@ -3,6 +3,21 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary: #c0903c;
+  --primary-foreground: #1a1200;
+  --card: #ffffff;
+  --card-foreground: #171717;
+  --popover: #ffffff;
+  --popover-foreground: #171717;
+  --border: #e5e5e5;
+  --input: #e5e5e5;
+  --ring: #c0903c;
+  --muted: #f5f5f5;
+  --muted-foreground: #6b6b6b;
+  --accent: #f5f5f5;
+  --accent-foreground: #171717;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
 }
 
 html {
@@ -12,6 +27,21 @@ html {
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
   --font-heading: var(--font-gilda), Georgia, serif;
   --font-body: var(--font-pt-serif), Georgia, serif;
   --font-sans: var(--font-pt-serif), Georgia, serif;
@@ -21,6 +51,21 @@ html {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --primary: #c0903c;
+    --primary-foreground: #080b12;
+    --card: #111318;
+    --card-foreground: #ededed;
+    --popover: #111318;
+    --popover-foreground: #ededed;
+    --border: #2a2a2a;
+    --input: #2a2a2a;
+    --ring: #c0903c;
+    --muted: #1a1a1a;
+    --muted-foreground: #9a9a9a;
+    --accent: #1a1a1a;
+    --accent-foreground: #ededed;
+    --destructive: #ef4444;
+    --destructive-foreground: #ffffff;
   }
 }
 
@@ -115,4 +160,61 @@ h6 {
   .hero-zoom {
     animation: none;
   }
+}
+
+/* Logo-derived palette, scoped to hair-scan surfaces and their Radix portals.
+   Keep this after the system dark palette so the ivory treatment stays consistent. */
+.hairscan-theme {
+  color-scheme: light;
+  --background: #fbf8f3;
+  --foreground: #414042;
+  --primary: #c99045;
+  --primary-foreground: #241b12;
+  --card: #ffffff;
+  --card-foreground: #414042;
+  --popover: #ffffff;
+  --popover-foreground: #414042;
+  --border: #e8e0d2;
+  --input: #d6c8b5;
+  --ring: #8a602b;
+  --muted: #f1ebe2;
+  --muted-foreground: #68645f;
+  --accent: #f5ead8;
+  --accent-foreground: #714d23;
+  --destructive: #b42318;
+  --destructive-foreground: #ffffff;
+  color: var(--foreground);
+}
+
+/* Darker gold keeps small labels legible on the light brand surfaces. */
+.hairscan-theme .text-primary {
+  color: #8a602b;
+}
+
+/* Hair-scan camera/loader scan-line and floating orb effects. */
+@keyframes scan-line {
+  0% { top: 0%; }
+  100% { top: 100%; }
+}
+
+.animate-scan {
+  animation: scan-line 2s ease-in-out infinite alternate;
+}
+
+.animate-scan-slow {
+  animation: scan-line 2.6s ease-in-out infinite alternate;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-16px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float 6s ease-in-out infinite;
+  animation-delay: 1.5s;
 }

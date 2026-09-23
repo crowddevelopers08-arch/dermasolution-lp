@@ -1,0 +1,24 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Scan {
+  id             Int      @id @default(autoincrement())
+  name           String
+  phone          String   @unique
+  location       String   @default("")
+  problem        String
+  imageData      String?  @db.Text
+  pageUrl        String   @default("")
+  formName       String   @default("hair-scan")
+  telecrmStatus  String   @default("pending")
+  telecrmLeadIds String?
+  telecrmError   String?
+  createdAt      DateTime @default(now())
+}

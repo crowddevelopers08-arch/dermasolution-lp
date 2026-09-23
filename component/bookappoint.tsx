@@ -40,8 +40,8 @@ export default function AppointmentBanner() {
       className="relative overflow-hidden px-4 pb-10 pt-10 sm:px-6 xl:px-6 xl:pt-[100px]"
     >
       <div className="relative mx-auto min-h-[298px] w-full max-w-[1684px] overflow-visible rounded-[26px] border border-[#C99045]/60 bg-[#FBF8F3]">
-        {/* gold panel + rings */}
-        <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-[25px]">
+        {/* gold panel + rings — only from xl up, where the copy narrows to make room for it */}
+        <div className="pointer-events-none absolute inset-0 hidden overflow-hidden rounded-[25px] xl:block">
           <div
             className="absolute inset-y-0 right-0 w-[36%]"
             style={{ background: GOLD }}

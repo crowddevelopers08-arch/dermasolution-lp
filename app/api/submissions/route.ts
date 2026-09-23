@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import * as fs from 'fs';
 import * as path from 'path';
+import { prisma } from '@/lib/prisma';
 
 const DATA_DIR = path.join(process.cwd(), 'data');
 const FILE_PATH = path.join(DATA_DIR, 'dermasolution-leads.csv');
@@ -331,6 +332,33 @@ export async function POST(req: NextRequest) {
       appendLocalRow(row);
     } catch (csvErr) {
       console.warn('Local CSV save skipped:', (csvErr as Error).message);
+    }
+
+    // Reviews aren't leads — keep the admin dashboard scoped to actual
+    // consultation/hair-scan submissions.
+    if (body.source !== REVIEW_SOURCE) {
+      try {
+        await prisma.scan.upsert({
+          where: { phone: body.phone },
+          create: {
+            name: body.name,
+            phone: body.phone,
+            problem: body.concern,
+            pageUrl: body.pageUrl,
+            formName: body.formName,
+            telecrmStatus,
+          },
+          update: {
+            name: body.name,
+            problem: body.concern,
+            pageUrl: body.pageUrl,
+            formName: body.formName,
+            telecrmStatus,
+          },
+        });
+      } catch (dbErr) {
+        console.warn('Database lead save skipped:', (dbErr as Error).message);
+      }
     }
 
     let excelStatus = getSheetWebhookUrl() ? 'failed' : 'not_configured';

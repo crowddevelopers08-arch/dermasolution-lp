@@ -117,10 +117,30 @@ export default function ClinicHero() {
   useEffect(() => {
     const list = listRef.current
     const pill = pillRefs.current[active]
-    if (!list || !pill || list.scrollWidth <= list.clientWidth) return
+    if (!list || !pill) return
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+
+    // Keep the pill fully clear of the 28px edge fade (see [mask-image] below),
+    // scrolling only as far as needed rather than always re-centring — this
+    // guarantees the pill is fully visible without ever jumping the page.
+    // Uses getBoundingClientRect (viewport-relative) rather than offsetLeft so
+    // the math stays correct regardless of layout/font-loading timing.
+    const buffer = 28
+    const listRect = list.getBoundingClientRect()
+    const pillRect = pill.getBoundingClientRect()
+    const pillLeft = pillRect.left - listRect.left + list.scrollLeft
+    const pillRight = pillLeft + pillRect.width
+    const maxScroll = Math.max(0, list.scrollWidth - list.clientWidth)
+
+    let target = list.scrollLeft
+    if (pillLeft - buffer < target) {
+      target = pillLeft - buffer
+    } else if (pillRight + buffer > target + list.clientWidth) {
+      target = pillRight + buffer - list.clientWidth
+    }
+
     list.scrollTo({
-      left: pill.offsetLeft - (list.clientWidth - pill.offsetWidth) / 2,
+      left: Math.max(0, Math.min(target, maxScroll)),
       behavior: reduce ? "auto" : "smooth",
     })
   }, [active])
@@ -159,11 +179,11 @@ export default function ClinicHero() {
           Skin, Hair &amp; Aesthetic Care in Bangalore
         </h1>
 
-        <p className="hero-reveal hero-reveal-right hero-reveal-2 mt-5 text-[18px] text-[#E6C58F] sm:text-[21px]">
+        <p className="hero-reveal hero-reveal-right hero-reveal-2 mt-5 text-[18px] text-[#E6C58F] sm:text-[25px]">
           Personalised treatments, guided by a dermatologist.
         </p>
 
-        <p className="hero-reveal hero-reveal-left hero-reveal-3 mt-4 max-w-[560px] text-[15px] leading-relaxed text-[#C9C4BB] sm:text-[16px]">
+        <p className="hero-reveal hero-reveal-left hero-reveal-3 mt-4 max-w-[560px] text-[15px] leading-relaxed text-[#C9C4BB] sm:text-[18px]">
           From acne, pigmentation and hair loss to laser treatments, skin
           rejuvenation and anti-ageing, get the right treatment for your
           concern.
