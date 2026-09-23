@@ -165,7 +165,7 @@ export function ResultsView({ formData, capturedImage, onBack }: ResultsViewProp
       }
 
       setPdfFormOpen(false)
-      window.location.assign("/hairscan-thank-you")
+      window.location.assign("/hair-scan/hairscan-thank-you")
     } catch (err) {
       console.error("Submit failed:", err)
       const msg = err instanceof Error ? err.message : "Something went wrong"
