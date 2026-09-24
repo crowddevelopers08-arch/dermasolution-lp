@@ -355,7 +355,7 @@ export async function ScanDashboard({
                   </p>
                 )}
                 <p className="text-xs text-muted-foreground">
-                  {new Date(scan.createdAt).toLocaleString(undefined, { year: "numeric", month: "numeric", day: "numeric", hour: "2-digit", minute: "2-digit" })}
+                  {new Date(scan.createdAt).toLocaleString("en-IN", { timeZone: "Asia/Kolkata", year: "numeric", month: "numeric", day: "numeric", hour: "2-digit", minute: "2-digit" })}
                 </p>
               </div>
             </article>

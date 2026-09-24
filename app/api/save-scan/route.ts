@@ -67,6 +67,10 @@ function isTelecrmConfirmed(data: unknown) {
   const record = data as Record<string, unknown>
   if (record.success === true) return true
 
+  // TeleCRM replies { "result": "Accepted" } when it queues the lead.
+  const result = String(record.result || "").toLowerCase()
+  if (result === "accepted" || result === "success") return true
+
   const status = String(record.status || "").toLowerCase()
   return status === "created" || status === "updated" || status === "success" || status === "200"
 }
