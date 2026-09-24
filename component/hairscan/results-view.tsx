@@ -19,7 +19,7 @@ const resultsData = {
   "hair-fall": {
     title: "Hair Fall Report",
     description:
-      "Based on our AI analysis, we have identified specific issues. Book a consultation with our specialist to learn about the solutions.",
+      "Based on our analysis, we have identified specific issues. Book a consultation with our specialist to learn about the solutions.",
     recommendations: [
       "PRP - Controls hair fall and strengthens roots",
       "GFC - Improves regrowth and thickness",
@@ -29,6 +29,7 @@ const resultsData = {
     ],
     docTitle: "Hair Fall Report",
     docDescription: "Detailed report with stage-wise plan and treatment recommendations for hair fall.",
+    pdf: "/Hair-Fall-Report.pdf",
   },
   "hair-thinning": {
     title: "Hair Thinning Report",
@@ -42,6 +43,7 @@ const resultsData = {
     ],
     docTitle: "Hair Thinning Report",
     docDescription: "Stage-wise plan to restore volume and strengthen thinning hair.",
+    pdf: "/Lower-Hair-Density-Report.pdf",
   },
   "receding-hairline": {
     title: "Receding Hairline Report",
@@ -55,6 +57,7 @@ const resultsData = {
     ],
     docTitle: "Receding Hairline Report",
     docDescription: "Focused plan to control recession and restore frontal hairline density.",
+    pdf: "/Frontal-Hair-Loss-Report.pdf",
   },
   "crown-thinning": {
     title: "Crown Thinning Report",
@@ -68,6 +71,7 @@ const resultsData = {
     ],
     docTitle: "Crown Thinning Report",
     docDescription: "Stage-based restoration plan for crown thinning and pattern hair loss.",
+    pdf: "/Crown-Thinning-Report.pdf",
   },
   "dandruff-scalp-concerns": {
     title: "Dandruff & Scalp Concerns Report",
@@ -81,6 +85,7 @@ const resultsData = {
     ],
     docTitle: "Dandruff & Scalp Concerns Report",
     docDescription: "Scalp-focused report with therapy suggestions and stage-wise care guidance.",
+    pdf: "/Dandruff-Scalp-Issues-Report.pdf",
   },
   "patchy-hair-loss": {
     title: "Patchy Hair Loss Report",
@@ -94,6 +99,7 @@ const resultsData = {
     ],
     docTitle: "Patchy Hair Loss Report",
     docDescription: "Targeted assessment and treatment path for patchy hair loss.",
+    pdf: "/Hair-Fall-Report.pdf",
   },
   "weak-low-density-hair": {
     title: "Weak / Low-Density Hair Report",
@@ -107,6 +113,7 @@ const resultsData = {
     ],
     docTitle: "Weak / Low-Density Hair Report",
     docDescription: "Comprehensive density restoration report with treatment path by stage.",
+    pdf: "/Lower-Hair-Density-Report.pdf",
   },
   "excessive-shedding": {
     title: "Excessive Shedding Report",
@@ -120,7 +127,17 @@ const resultsData = {
     ],
     docTitle: "Excessive Shedding Report",
     docDescription: "Stage-wise plan to control shedding and support regrowth.",
+    pdf: "/Hair-Fall-Report.pdf",
   },
+}
+
+function downloadReport(pdfPath: string) {
+  const link = document.createElement("a")
+  link.href = pdfPath
+  link.download = pdfPath.split("/").pop() || "Hair-Scan-Report.pdf"
+  document.body.appendChild(link)
+  link.click()
+  link.remove()
 }
 
 export function ResultsView({ formData, capturedImage, onBack }: ResultsViewProps) {
@@ -165,7 +182,9 @@ export function ResultsView({ formData, capturedImage, onBack }: ResultsViewProp
       }
 
       setPdfFormOpen(false)
-      window.location.assign("/hair-scan/hairscan-thank-you")
+      downloadReport(data.pdf)
+      // Give the browser a moment to start the download before navigating away.
+      setTimeout(() => window.location.assign("/hair-scan/hairscan-thank-you"), 1000)
     } catch (err) {
       console.error("Submit failed:", err)
       const msg = err instanceof Error ? err.message : "Something went wrong"
@@ -259,7 +278,7 @@ export function ResultsView({ formData, capturedImage, onBack }: ResultsViewProp
           boxShadow: "0 4px 30px rgba(0,0,0,0.4), inset 0 1px 0 rgba(201,144,69,0.07)"
         }}>
           <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "2px", background: "linear-gradient(90deg, transparent, #8A602B, transparent)" }} />
-          <p style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "#8A602B", marginBottom: "10px" }}>your AI Scan Report is Ready
+          <p style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "#8A602B", marginBottom: "10px" }}>your Scan Report is Ready
 </p>
           <p style={{ lineHeight: 1.8, color: "#68645F", fontSize: "0.95rem" }}>{data.description}</p>
         </div>

@@ -79,11 +79,6 @@ export function HeroSection({ onStartScan }: HeroSectionProps) {
           </div>
         </div>
 
-        {/* Badge */}
-        <div className="mb-6 max-sm:mb-2 flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-2 text-sm text-primary">
-          <Sparkles className="h-4 w-4" />
-          <span>AI-Powered Hair Analysis</span>
-        </div>
 
         {/* Main heading */}
         <h1 className="mb-6 max-sm:mb-2 text-balance text-4xl font-bold leading-tight tracking-tight text-foreground md:text-5xl lg:text-6xl">
@@ -164,13 +159,10 @@ export function HeroSection({ onStartScan }: HeroSectionProps) {
                 </SelectTrigger>
                 <SelectContent className="hairscan-theme border-border bg-card">
                   <SelectItem value="hair-fall">Hair Fall</SelectItem>
-                  <SelectItem value="hair-thinning">Hair Thinning</SelectItem>
-                  <SelectItem value="receding-hairline">Receding Hairline</SelectItem>
                   <SelectItem value="crown-thinning">Crown Thinning</SelectItem>
                   <SelectItem value="dandruff-scalp-concerns">Dandruff & Scalp Concerns</SelectItem>
                   <SelectItem value="patchy-hair-loss">Patchy Hair Loss</SelectItem>
                   <SelectItem value="weak-low-density-hair">Weak or Low-Density Hair</SelectItem>
-                  <SelectItem value="excessive-shedding">Excessive Shedding</SelectItem>
                 </SelectContent>
               </Select>
               {error && <p className="text-sm text-destructive">{error}</p>}

@@ -61,15 +61,12 @@ const categories = [
     items: [
       "Anti-ageing treatments",
       "Skin tightening",
-      "Body treatments",
-      "Cellulite treatments",
     ],
     image: cloudinaryImages.antiBanner,
   },
   {
     title: "Specialised Dermatology",
     items: [
-      "Dermatosurgery",
       "Pediatric Dermatology",
       "Nail fungus treatments",
     ],

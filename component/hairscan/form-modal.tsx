@@ -120,13 +120,10 @@ export function FormModal({ open, onOpenChange, onSubmit }: FormModalProps) {
               onValueChange={(
                 value:
                   | "hair-fall"
-                  | "hair-thinning"
-                  | "receding-hairline"
                   | "crown-thinning"
                   | "dandruff-scalp-concerns"
                   | "patchy-hair-loss"
                   | "weak-low-density-hair"
-                  | "excessive-shedding"
               ) => setFormData({ ...formData, problem: value })}
             >
               <SelectTrigger className="border-border/50 bg-background/50 focus:border-primary focus:ring-primary">

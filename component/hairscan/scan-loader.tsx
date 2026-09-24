@@ -31,7 +31,7 @@ export function ScanLoader({ open, onOpenChange, capturedImage, onComplete }: Sc
       "Initializing scan...",
       "Detecting facial features...",
       "Analyzing hair texture...",
-      "Processing AI algorithms...",
+      "Processing algorithms...",
       "Generating personalized results...",
     ]
 
@@ -62,9 +62,9 @@ export function ScanLoader({ open, onOpenChange, capturedImage, onComplete }: Sc
         className="hairscan-theme border-primary/20 bg-card/95 backdrop-blur-xl sm:max-w-md"
       >
         <div className="flex flex-col items-center p-6">
-          <DialogTitle className="mb-6 text-2xl font-bold text-foreground">AI Hair Analysis</DialogTitle>
+          <DialogTitle className="mb-6 text-2xl font-bold text-foreground">Hair Analysis</DialogTitle>
           <DialogDescription className="sr-only">
-            AI is analyzing your hair. Please wait while we process your image.
+             Analyzing your hair. Please wait while we process your image.
           </DialogDescription>
 
           {/* Captured image with scanning effect */}
