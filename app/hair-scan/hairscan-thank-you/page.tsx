@@ -5,7 +5,7 @@ import CopyrightBar from "@/component/copyright-bar"
 import Navbar from "@/component/hairscan/navbar"
 
 /**
- * Thank-you page — /hairscan-thank-you
+ * Thank-you page — /hair-scan/hairscan-thank-you
  *
  * Visitors land here straight after booking a consultation from the
  * hair scan results (see component/hairscan/results-view.tsx). Not indexed by search engines.
