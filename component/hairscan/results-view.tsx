@@ -131,15 +131,6 @@ const resultsData = {
   },
 }
 
-function downloadReport(pdfPath: string) {
-  const link = document.createElement("a")
-  link.href = pdfPath
-  link.download = pdfPath.split("/").pop() || "Hair-Scan-Report.pdf"
-  document.body.appendChild(link)
-  link.click()
-  link.remove()
-}
-
 export function ResultsView({ formData, capturedImage, onBack }: ResultsViewProps) {
   const [pdfFormOpen, setPdfFormOpen] = useState(false)
   const [pdfGenerating, setPdfGenerating] = useState(false)
@@ -182,9 +173,7 @@ export function ResultsView({ formData, capturedImage, onBack }: ResultsViewProp
       }
 
       setPdfFormOpen(false)
-      downloadReport(data.pdf)
-      // Give the browser a moment to start the download before navigating away.
-      setTimeout(() => window.location.assign("/hair-scan/hairscan-thank-you"), 1000)
+      window.location.assign("/hair-scan/hairscan-thank-you")
     } catch (err) {
       console.error("Submit failed:", err)
       const msg = err instanceof Error ? err.message : "Something went wrong"
