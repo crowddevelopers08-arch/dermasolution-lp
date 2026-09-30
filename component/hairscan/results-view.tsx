@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { Button } from "@/component/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/component/ui/card" // eslint-disable-line @typescript-eslint/no-unused-vars
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/component/ui/dialog"
@@ -29,7 +30,6 @@ const resultsData = {
     ],
     docTitle: "Hair Fall Report",
     docDescription: "Detailed report with stage-wise plan and treatment recommendations for hair fall.",
-    pdf: "/Hair-Fall-Report.pdf",
   },
   "hair-thinning": {
     title: "Hair Thinning Report",
@@ -43,7 +43,6 @@ const resultsData = {
     ],
     docTitle: "Hair Thinning Report",
     docDescription: "Stage-wise plan to restore volume and strengthen thinning hair.",
-    pdf: "/Lower-Hair-Density-Report.pdf",
   },
   "receding-hairline": {
     title: "Receding Hairline Report",
@@ -57,7 +56,6 @@ const resultsData = {
     ],
     docTitle: "Receding Hairline Report",
     docDescription: "Focused plan to control recession and restore frontal hairline density.",
-    pdf: "/Frontal-Hair-Loss-Report.pdf",
   },
   "crown-thinning": {
     title: "Crown Thinning Report",
@@ -71,7 +69,6 @@ const resultsData = {
     ],
     docTitle: "Crown Thinning Report",
     docDescription: "Stage-based restoration plan for crown thinning and pattern hair loss.",
-    pdf: "/Crown-Thinning-Report.pdf",
   },
   "dandruff-scalp-concerns": {
     title: "Dandruff & Scalp Concerns Report",
@@ -85,7 +82,6 @@ const resultsData = {
     ],
     docTitle: "Dandruff & Scalp Concerns Report",
     docDescription: "Scalp-focused report with therapy suggestions and stage-wise care guidance.",
-    pdf: "/Dandruff-Scalp-Issues-Report.pdf",
   },
   "patchy-hair-loss": {
     title: "Patchy Hair Loss Report",
@@ -99,7 +95,6 @@ const resultsData = {
     ],
     docTitle: "Patchy Hair Loss Report",
     docDescription: "Targeted assessment and treatment path for patchy hair loss.",
-    pdf: "/Hair-Fall-Report.pdf",
   },
   "weak-low-density-hair": {
     title: "Weak / Low-Density Hair Report",
@@ -113,7 +108,6 @@ const resultsData = {
     ],
     docTitle: "Weak / Low-Density Hair Report",
     docDescription: "Comprehensive density restoration report with treatment path by stage.",
-    pdf: "/Lower-Hair-Density-Report.pdf",
   },
   "excessive-shedding": {
     title: "Excessive Shedding Report",
@@ -127,11 +121,11 @@ const resultsData = {
     ],
     docTitle: "Excessive Shedding Report",
     docDescription: "Stage-wise plan to control shedding and support regrowth.",
-    pdf: "/Hair-Fall-Report.pdf",
   },
 }
 
 export function ResultsView({ formData, capturedImage, onBack }: ResultsViewProps) {
+  const router = useRouter()
   const [pdfFormOpen, setPdfFormOpen] = useState(false)
   const [pdfGenerating, setPdfGenerating] = useState(false)
   const [pdfForm, setPdfForm] = useState({ name: formData.name || "", phone: formData.phone || "", location: "" })
@@ -173,7 +167,13 @@ export function ResultsView({ formData, capturedImage, onBack }: ResultsViewProp
       }
 
       setPdfFormOpen(false)
-      window.location.assign("/hair-scan/hairscan-thank-you")
+      const link = document.createElement("a")
+      link.href = "/Derma_Solutions_Hair_Fall_Guide.pdf"
+      link.download = "Derma_Solutions_Hair_Fall_Guide.pdf"
+      document.body.appendChild(link)
+      link.click()
+      link.remove()
+      router.push("/hair-scan/hairscan-thank-you")
     } catch (err) {
       console.error("Submit failed:", err)
       const msg = err instanceof Error ? err.message : "Something went wrong"
