@@ -161,10 +161,6 @@ export default function AboutSection() {
                   className="absolute inset-0 animate-ping rounded-full opacity-60"
                   style={{ background: GREEN }}
                 />
-                <span
-                  className="absolute inset-0 rounded-full"
-                  style={{ background: GREEN }}
-                />
               </span>
             </p>
           </div>
