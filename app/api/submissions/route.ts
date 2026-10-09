@@ -54,7 +54,9 @@ function normalizeSubmission(body: Record<string, unknown>): SubmissionBody {
 
 const REVIEW_SOURCE = 'Review Page';
 
-// Column shape for the separate "review leads" tab in the Google Sheet.
+const REVIEW_SHEET_NAME = 'Review Leads';
+
+// Column shape for the separate "Review Leads" tab in the Google Sheet.
 const REVIEW_HEADERS = [
   'Timestamp',
   'Source',
@@ -151,6 +153,7 @@ async function pushToSheet(body: SubmissionBody, timestamp: string, telecrmStatu
       rating: body.rating,
       callback: body.callback,
       isReview,
+      ...(isReview ? { sheetName: REVIEW_SHEET_NAME } : {}),
       headers: HEADERS,
       reviewHeaders: REVIEW_HEADERS,
       row,
