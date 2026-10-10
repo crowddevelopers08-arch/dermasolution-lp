@@ -24,7 +24,7 @@ const LOGO_SRC = cloudinaryImages.logo;
 
 // Carewell Clinic and Acadamy — Google Business listing (CID from the map embed
 // in components/ContactMapSection.tsx). Replace with the short
-// https://g.page/r/<id>/review link from Google Business Profile when available.
+// https://g.page/r/<id>/review link from Google Business Profile wen available.
 const GOOGLE_REVIEW_URL =
   'https://g.page/r/CVPdq5sHz1tJEBM/review';
 
