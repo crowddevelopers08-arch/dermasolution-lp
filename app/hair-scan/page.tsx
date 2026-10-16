@@ -7,6 +7,7 @@ import { InfoSection } from "@/component/hairscan/info-section"
 import type { FormData } from "@/component/hairscan/form-modal"
 import { CameraModal } from "@/component/hairscan/camera-modal"
 import { ScanLoader } from "@/component/hairscan/scan-loader"
+import { HairscanTracking } from "@/component/hairscan/tracking"
 
 const ResultsView = dynamic(
   () => import("@/component/hairscan/results-view").then((m) => m.ResultsView),
@@ -49,11 +50,12 @@ export default function Home() {
   }
 
   if (appState === "results") {
-    return <ResultsView formData={formData} capturedImage={capturedImage} onBack={handleBackToHome} />
+    return <><HairscanTracking /><ResultsView formData={formData} capturedImage={capturedImage} onBack={handleBackToHome} /></>
   }
 
   return (
     <main className="hairscan-theme min-h-screen bg-background">
+      <HairscanTracking />
       <HeroSection onStartScan={handleStartScanFromHero} />
       <InfoSection onStartScan={handleStartScan} />
 

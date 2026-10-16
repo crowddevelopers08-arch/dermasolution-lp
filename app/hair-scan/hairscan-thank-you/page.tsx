@@ -3,6 +3,7 @@ import Link from "next/link"
 import { Check, MapPin, Phone } from "lucide-react"
 import CopyrightBar from "@/component/copyright-bar"
 import Navbar from "@/component/hairscan/navbar"
+import { HairscanMetaPixel } from "@/component/hairscan/tracking"
 
 /**
  * Thank-you page — /hair-scan/hairscan-thank-you
@@ -29,6 +30,7 @@ const content = {
 export default function HairscanThankYouPage() {
   return (
     <>
+      <HairscanMetaPixel submitApplication />
       <Navbar />
 
       <main className="flex w-full flex-1 items-center justify-center bg-[#FBF8F3] px-4 py-16 sm:px-8 sm:py-8">
